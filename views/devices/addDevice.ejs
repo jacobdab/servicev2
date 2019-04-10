@@ -1,0 +1,83 @@
+<% include ../partials/header%>
+
+
+<div class="col-lg-9 mx-auto mt-5">
+<section class="addDevice d-flex justify-content-center align-items-center mt-3 h-100 ">
+    <div class="form-box ">
+        <form method="post" action="/service/devices/<%=client._id%>/addDevice">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="manufacturer" aria-describedby="emailHelp" placeholder='Manufacturer' required>
+                    </div>
+                        <div class="modal fade" id="addModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-control">
+                                                <input class="form-control" type="text" id="model" name="addModel">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary model-save">Add new model</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addModel">
+                                Add model
+                            </button>
+                        <select class="form-control" name="model">
+                            <%model.forEach((modelE)=>{%>
+                                <option value="<%=modelE.model%>"><%=modelE.model%></option>
+                            <%})%>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="imei" placeholder='Serial number or IMEI'>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="repair" placeholder="What's broken">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="lockCode" placeholder="Lock code">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="condition" placeholder="Visual condition">
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="warranty" name="warranty" data-val="true" value="true">
+                        <label class="form-check-label" for="exampleCheck1">Warranty</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="express" name="express" data-val="true" value="true">
+                        <label class="form-check-label" for="exampleCheck1">Express repair</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="findMyiPhone" name="findMyiPhone" data-val="true" value="true">
+                        <label class="form-check-label" for="findMyiPhone">FindMyiPhone</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="data" name="data" data-val="true" value="true">
+                        <label class="form-check-label" for="data">Important data</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Add device</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+</div>
+
+
+<% include ../partials/footer%>

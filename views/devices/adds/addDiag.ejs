@@ -1,0 +1,26 @@
+<% include ../../partials/header%>
+
+
+<section class="addDevice d-flex justify-content-center align-items-center mt-3 h-100 ">
+    <div class="form-box ">
+        <form method="post" action="/service/devices/<%=device._id%>/addDiagnose?_method=PUT">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <input type="number" class="form-control" name="price" placeholder='Price for repair' value="<%=device.price%>">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="diagnose" placeholder='Type in diagnoze' value="<%=device.diagnose%>">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add diagnoze</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+
+<% include ../../partials/footer%>

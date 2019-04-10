@@ -1,0 +1,219 @@
+<% if(BreadCrumb.category == 'iPad'){ %>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                <input type="text" class="form-control" name="manufacturer" aria-describedby="emailHelp" readonly
+                       value="Apple" placeholder='Firma' required>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <input type="text" class="form-control" name="category" readonly  value="<%= BreadCrumb.category %>"
+                       placeholder='<%= BreadCrumb.category %>' required>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <input type="text" class="form-control" name="subCategory" readonly  value="<%= BreadCrumb.subCategory %>"
+                       placeholder='<%= BreadCrumb.subCategory %>' required>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="row px-0">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="model" placeholder='Model' required>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder='Pełna nazwa produktu' required>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="shortDescription" placeholder='Skrócony opis'
+                               required>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                    <textarea class="form-control" name="description" placeholder='Opis produktu' rows="6"
+                              required></textarea>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <input type="url" class="form-control" name="imageHR" aria-describedby="imageHR"
+                               placeholder='Ścieżka do obrazka' required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><button type="button" class="modalAdd" data-toggle="modal" data-target="#ModalAddHDD"><i
+                                            class="fas fa-plus-square fontAwe"></i></button></div>
+                        </div>
+                        <select class="form-control" name="hdd" required><option disabled selected>Pojemność dysku</option><%parameters.forEach((parameterE)=>{%>
+                            <%if(parameterE.hdd==""){%>
+
+                            <%}else{%>
+                            <option value="<%=parameterE.hdd%>"><%=parameterE.hdd%></option>
+                            <%}%>
+
+                            <%})%></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <div class="btn-group" role="group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><button type="button" class="modalAdd" data-toggle="modal" data-target="#ModalAddColor"><i
+                                            class="fas fa-plus-square fontAwe"></i></button></div>
+                        </div>
+                        <select class="form-control" name="color" required><option disabled selected>Kolor</option><%parameters.forEach((parameterE)=>{%>
+                            <%if(parameterE.color==""){%>
+                            <%}else{%>
+                            <option value="<%=parameterE.color%>"><%=parameterE.color%></option>
+                            <%}%>
+                            <%})%></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <div class="btn-group" role="group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><button type="button" class="modalAdd" data-toggle="modal" data-target="#ModalAddSize"><i
+                                            class="fas fa-plus-square fontAwe"></i></button></div>
+                        </div>
+                        <select class="form-control" name="size" required><option disabled selected>Przekątna ekranu</option><%parameters.forEach((parameterE)=>{%>
+                            <%if(parameterE.size==""){%>
+                            <%}else{%>
+                            <option value="<%=parameterE.size%>"><%=parameterE.size%></option>
+                            <%}%>
+                            <%})%></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <div class="btn-group" role="group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><button type="button" class="modalAdd" data-toggle="modal" data-target="#ModalAddConn"><i
+                                            class="fas fa-plus-square fontAwe"></i></button></div>
+                        </div>
+                        <select class="form-control" name="conn" required><option disabled selected>Rodzaj połączenia</option><%parameters.forEach((parameterE)=>{%>
+                            <%if(parameterE.conn==""){%>
+                            <%}else{%>
+                            <option value="<%=parameterE.conn%>"><%=parameterE.conn%></option>
+                            <%}%>
+                            <%})%></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <div class="btn-group" role="group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><button type="button" class="modalAdd" data-toggle="modal" data-target="#ModalAddRam"><i
+                                            class="fas fa-plus-square fontAwe"></i></button></div>
+                        </div>
+                        <select class="form-control" name="ram" required><option disabled selected>Ilość ram</option><%parameters.forEach((parameterE)=>{%>
+                            <%if(parameterE.ram==""){%>
+                            <%}else{%>
+                            <option value="<%=parameterE.ram%>"><%=parameterE.ram%></option>
+                            <%}%>
+                            <%})%></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <div class="btn-group" role="group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><button type="button" class="modalAdd" data-toggle="modal" data-target="#ModalAddRes"><i
+                                            class="fas fa-plus-square fontAwe"></i></button></div>
+                        </div>
+                        <select class="form-control" name="resolution" required><option disabled selected>Rozdzielczość</option><%parameters.forEach((parameterE)=>{%>
+                            <%if(parameterE.res==""){%>
+                            <%}else{%>
+                            <option value="<%=parameterE.res%>"><%=parameterE.res%></option>
+                            <%}%>
+                            <%})%></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <input type="text" class="form-control" name="quantity" placeholder='Ilość' required>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <input type="number" class="form-control" name="price" placeholder='Cena' min="1.0" step="1.0" required>
+            </div>
+        </div>
+    </div>
+<% }else{ %>
+    <div class="form-group">
+        <input type="text" class="form-control" name="manufacturer" aria-describedby="emailHelp" placeholder='Firma'
+               required>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="model" aria-describedby="emailHelp" placeholder='Model' required>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="name" aria-describedby="emailHelp"
+               placeholder='Pełna nazwa produktu' required>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="shortDescription" aria-describedby="emailHelp"
+               placeholder='Skrócony opis' required>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" name="description" aria-describedby="descriptionHelp" placeholder='Opis produktu'
+                  rows="6" required></textarea>
+    </div>
+    <div class="form-group">
+
+    </div>
+    <div class="form-group">
+
+    </div>
+
+    <div class="form-group">
+        <input type="url" class="form-control" name="imageHR" aria-describedby="imageHR"
+               placeholder='Ścieżka do obrazka' required>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="quantity" aria-describedby="quantityHelp" placeholder='Ilość'
+               required>
+    </div>
+    <div class="form-group">
+        <input type="number" class="form-control" name="price" aria-describedby="priceHelp" placeholder='Cena' min="1.0"
+               step="1.0" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Dodaj produkt</button>
+<% } %>
+
+
+

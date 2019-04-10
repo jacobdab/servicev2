@@ -1,0 +1,29 @@
+<% include ../partials/header%>
+
+
+<section class="addDevice d-flex justify-content-center align-items-center mt-3 h-100 ">
+    <div class="form-box ">
+                <form action="/service/devices/addClient" method="post" >
+                <div class="form-group">
+                    <input type="text" class="form-control" name="clientName" aria-describedby="clientNameHelp" placeholder='Imię i Nazwisko' required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="contact" aria-describedby="contactHelp" placeholder='Numer Kontaktowy' required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="address" aria-describedby="adressHelp" placeholder='Adres' required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="email" aria-describedby="emailHelp" placeholder='Email' required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="nip" aria-describedby="nipHelp" placeholder='Nip'>
+                </div>
+                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                </form>
+            </div>
+</section>
+
+
+
+<% include ../partials/footer%>

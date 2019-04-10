@@ -1,0 +1,100 @@
+<% include partials/header %>
+<% if(currentUser && typeof currentUser != "undefined"){ %>
+<div class="col-lg-9 mt-5 mx-auto">
+    <section class="stats h-100 mt-3">
+        <div class="row justify-content-between text-white">
+            <div class="col-lg-4 pl-0 ">
+                <div class="background rounded h-100">
+                    <h5 class="text-center">Today successful repairs</h5>
+                    <div class="dropdown-divider"></div>
+                    <div class="icon"><i class="fas fa-tools start"></i></div>
+                    <span class="sizer d-flex justify-content-center"><%= deviceToday.length %></span>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="background rounded h-100">
+                    <h5 class="text-center">Today profit</h5>
+                    <div class="dropdown-divider"></div>
+                    <i class="fas fa-search-dollar start"></i>
+                    <span class="sizer d-flex justify-content-center"><%= profit %></span>
+                </div>
+            </div>
+            <div class="col-lg-4 pr-0">
+                <div class="background rounded h-100">
+                    <h5 class="text-center">Year statistics</h5>
+                    <div class="dropdown-divider"></div>
+                    <i class="fas fa-dollar-sign start"></i>
+                    <div class="row">
+                        <div class="col-lg-9"><span class="d-flex justify-content-center">Devices repaired</span></div>
+                        <div class="col-lg-2"><span
+                                    class="d-flex justify-content-center"><%= deviceYear.length %></span></div>
+                        <div class="col-lg-9"><span class="d-flex justify-content-center">Profit from this year</span>
+                        </div>
+                        <div class="col-lg-2"><span class="d-flex justify-content-center"><%= profitYear %></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 pl-0 text-center mt-3">
+                <div id='myChart'></div>
+            </div>
+            <div class="col-lg-3 background mt-3 rounded h-100 pb-3">
+                <h5 class="text-center">Award winning device</h5>
+                <div class="dropdown-divider"></div>
+                <i class="fas fa-mobile start"></i>
+                <span class="d-flex justify-content-center fontSizer"><%= show %></span>
+            </div>
+        </div>
+    </section>
+</div>
+<% }else{ %>
+    <div class="position-absolute text-white middle grabient border rounded px-3 py-5">
+        <h1 class="">Please login first</h1>
+    </div>
+    <div class="col-lg-9 mt-5 mx-auto blur">
+        <section class="stats h-100 mt-3">
+            <div class="row justify-content-between text-white">
+                <div class="col-lg-4 pl-0 ">
+                    <div class="background rounded h-100">
+                        <h5 class="text-center">Today successful repairs</h5>
+                        <div class="dropdown-divider"></div>
+                        <div class="icon"><i class="fas fa-tools start"></i></div>
+                        <span class="sizer d-flex justify-content-center">DATA</span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="background rounded h-100">
+                        <h5 class="text-center">Today profit</h5>
+                        <div class="dropdown-divider"></div>
+                        <i class="fas fa-search-dollar start"></i>
+                        <span class="sizer d-flex justify-content-center">DATA</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 pr-0">
+                    <div class="background rounded h-100">
+                        <h5 class="text-center">Year statistics</h5>
+                        <div class="dropdown-divider"></div>
+                        <i class="fas fa-dollar-sign start"></i>
+                        <div class="row">
+                            <div class="col-lg-9"><span class="d-flex justify-content-center">Devices repaired</span>
+                            </div>
+                            <div class="col-lg-2"><span class="d-flex justify-content-center">DATA</span></div>
+                            <div class="col-lg-9"><span
+                                        class="d-flex justify-content-center">Profit from this year</span></div>
+                            <div class="col-lg-2"><span class="d-flex justify-content-center">DATA</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 pl-0 text-center mt-3">
+                    <div id='myChart'></div>
+                </div>
+                <div class="col-lg-3 background mt-3 rounded h-100 pb-3">
+                    <h5 class="text-center">Award winning device</h5>
+                    <div class="dropdown-divider"></div>
+                    <i class="fas fa-mobile start"></i>
+                    <span class="d-flex justify-content-center fontSizer">DATA</span>
+                </div>
+            </div>
+        </section>
+    </div>
+<% } %>
+<% include partials/footer %>

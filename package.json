@@ -1,0 +1,49 @@
+{
+  "name": "iplanetcare",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@angular/cli": "^7.3.7",
+    "async": "^2.6.2",
+    "blocked": "^1.2.1",
+    "body-parser": "^1.18.3",
+    "browserify": "^16.2.3",
+    "chart.js": "^2.7.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.3",
+    "crypto": "^1.0.1",
+    "cypress": "^3.2.0",
+    "debug": "~2.6.9",
+    "dotenv": "^6.2.0",
+    "ejs": "^2.6.1",
+    "escape-regexp": "0.0.1",
+    "express": "^4.16.4",
+    "express-sanitizer": "^1.0.5",
+    "express-session": "^1.15.6",
+    "http-errors": "~1.6.2",
+    "http-proxy-middleware": "^0.19.1",
+    "jquery": "^3.3.1",
+    "method-override": "^3.0.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.11",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-autopopulate": "^0.9.1",
+    "morgan": "~1.9.0",
+    "node-schedule": "^1.3.2",
+    "nodemailer": "^5.1.1",
+    "nodemon": "^1.18.10",
+    "owl-carousel": "^1.0.0",
+    "owl.carousel": "^2.3.4",
+    "parallax-js": "^3.1.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1",
+    "permission": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.10.4"
+  }
+}

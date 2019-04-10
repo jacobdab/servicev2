@@ -1,0 +1,32 @@
+<% include ../partials/header%>
+
+<section class="register d-flex justify-content-center align-items-center mt-3 h-100 ">
+    <div class="form-box">
+<form action="/register" method="post">
+    <div class="form-group">
+
+        <input type="text" class="form-control" id="username" name="username" aria-describedby="userHelp" placeholder="Wprowadź nazwę użytkownika">
+    </div>
+    <div class="form-inline form-group">
+
+        <input type="text" class="form-control px-2 mr-2" id="firstName" name="firstName" aria-describedby="imieHelp" placeholder="Imię">
+
+        <input type="text" class="form-control px-2 ml-2" id="lastName" name="lastName" aria-describedby="nazwiskoHelp" placeholder="Nazwisko">
+    </div>
+    <div class="form-group">
+
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Wprowadź email">
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" id="haslo" name="password" placeholder="Wprowadź hasło">
+    </div>
+    <div class="form-group">
+
+        <input type="date" class="form-control" id="urodziny"  name="dateOfBirth" aria-describedby="urodzinyHelp">
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Zarejestruj</button>
+</form>
+    </div>
+</section>
+
+<% include ../partials/footer%>

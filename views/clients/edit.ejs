@@ -1,0 +1,24 @@
+<% include ../partials/header%>
+
+<section class="register d-flex justify-content-center align-items-center mt-3 h-100 ">
+    <div class="form-box">
+        <form action="/customers/<%=client._id%>/edit?_method=PUT" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control px-2 mr-2" id="firstName" name="clientName" aria-describedby="imieHelp" value="<%=client.clientName%>" required>
+            </div>
+            <div class="form-group">
+                <%if(typeof client.nip == "undefined"){%>
+                <input type="text" class="form-control" id="nip" name="nip" aria-describedby="nipHelp" value="<%=client.nip%>" placeholder="Nip">
+                <%}else{%>
+                <input type="text" class="form-control" id="nip" name="nip" aria-describedby="nipHelp" disabled placeholder="Nip">
+                <%}%>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="contact" name="contact" placeholder="Numer Telefonu" value="<%=client.contact%>">
+            </div>
+            <button type="submit" class="btn btn-primary">Edit client</button>
+        </form>
+    </div>
+</section>
+
+<% include ../partials/footer%>

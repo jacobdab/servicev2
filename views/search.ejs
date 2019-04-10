@@ -1,0 +1,25 @@
+<% include partials/header%>
+
+
+
+<section class="search">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-4">
+                <%search.forEach(searchE=>{%>
+                <%=searchE.status%>
+                <%=searchE.client[0].firstName%>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<% include partials/footer%>

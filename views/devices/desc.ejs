@@ -1,0 +1,305 @@
+<% include ../partials/header%>
+
+<div class="col-lg-9 mx-auto mt-5">
+<section class="deviceDesc">
+<div class="container">
+    <ul class="nav nav-pills float-right">
+        <li class="nav-item dropdown btn-primary btn btn-sm p-0">
+            <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" role="button">Take Actions</a>
+            <div class="dropdown-menu p-0 m-0">
+                <a class="dropdown-item" href="/service/devices/<%=device._id%>/addDiagnose">Add diagnose</a>
+                <a class="dropdown-item" href="/service/devices/<%=device._id%>/addResult">Add result</a>
+                <div class="dropdown-divider my-1"></div>
+                <a class="list-group-item list-group-item-action list-group-item-primary dropdown-item" href="#">Message client about cost of repair</a>
+                <a href="<%=device._id%>" id="napr" class="list-group-item list-group-item-action list-group-item-danger dropdown-item">In repair</a>
+                <a href="<%=device._id%>" id="diag"  class="list-group-item list-group-item-action list-group-item-info dropdown-item">In diagnose</a>
+                <a href="<%=device._id%>"  id="test" class="list-group-item list-group-item-action list-group-item-warning dropdown-item">Being tested</a>
+                <a href="<%=device._id%>"  id="gwar" class="list-group-item list-group-item-action list-group-item-dark dropdown-item">In warranty repair</a>
+                <a href="<%=device._id%>"  id="odb" class="list-group-item list-group-item-action list-group-item-success dropdown-item">To recieve</a>
+                <a href="<%=device._id%>"  id="odeb" class="list-group-item list-group-item-action list-group-item-info dropdown-item">Recieved</a>
+            </div>
+        </li>
+    </ul>
+    <ul class="nav nav-tabs mb-3 mx-1" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active text-white" id="home-tab" data-toggle="tab" href="#info" role="tab">Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" id="profile-tab" data-toggle="tab" href="#finances" role="tab">Finances</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" id="contact-tab" data-toggle="tab" href="#history" role="tab">History</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+                <div class="col-lg-6 ">
+                    <div class="row mx-1 bg-light">
+                        <div class="col-lg-12 border">
+                            <h5 class="text-center">Information about repair</h5>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Client name</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <% device.client.forEach((deviceE)=>{%>
+                                <p class="justify-content-start d-flex">  <%= deviceE.clientName%></p>
+                            <%})%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Manufacturer</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%=  device.manufacturer%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Model</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%=  device.model%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Serial Number/IMEI</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%=  device.imei%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Warranty</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%if(device.warranty == 'true'){%>
+                                <i class="far fa-check-square"></i>
+                            <%}else{%>
+                                <i class="far fa-square"></i>
+                            <%}%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Express Repair</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%if(device.express == 'true'){%>
+                                <i class="far fa-check-square"></i>
+                            <%}else{%>
+                                <i class="far fa-square"></i>
+                            <%}%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Secret repair key</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%= device.secretKey%>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row mx-1 bg-light">
+                        <div class="col-lg-12 border">
+                            <h5 class="text-center">Repair Information</h5>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Repair Status</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%=  device.status%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Time</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <div class="container-fluid px-0">
+                                <div class="progress" title="Left <%=moment(device.created).add(14,'day').fromNow()%>. Used <%=Math.floor(progress[0])%>% of time ">
+                                    <%if(progress[0]<25){%>
+                                    <div class="progress-bar bg-success" data-toggle="tooltip" data-container="body" tooltip="tooltip1" tooltip-placement="top"  role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:<%=progress[0]%>%">
+                                    </div>
+                                    <%}else if(progress[0]<50){%>
+                                    <div class="progress-bar bg-info"  role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:<%=progress[0]%>%">
+                                    </div>
+                                    <%}else if(progress[0]<75){%>
+                                    <div class="progress-bar bg-warning"  role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:<%=progress[0]%>%">
+                                    </div>
+                                    <%}else{%>
+                                    <div class="progress-bar bg-danger"  role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:<%=progress[0]%>%">
+                                    </div>
+                                    <% }%>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Created</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%=  moment(device.created).format('LLL,dddd')%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Date Of End</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%=  moment(device.created).add(14,'day').format('LLL,dddd')%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Day's of recieve</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%=moment(device.created).fromNow()%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%time = moment(device.created).add(14,'days')%>
+                            <%now = moment().startOf('day')%>
+                            <%if(moment.duration(time.diff(now)).asDays()<0){%>
+                                <p class="justify-content-end d-flex text-danger">Day's after schedule</p>
+                            <%}else{%>
+                                <p class="justify-content-end d-flex">Left To End Of Repair</p>
+                            <%}%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%=moment(device.created).add(14,'days').fromNow()%>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-3">
+                    <div class="row mx-1 bg-light">
+                        <div class="col-lg-12 border">
+                            <h5 class="text-center">Additional Information</h5>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Find My Iphone</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%if(device.findMyiPhone == 'true'){%>
+                                <i class="far fa-check-square"></i>
+                            <%}else{%>
+                                <i class="far fa-square"></i>
+                            <%}%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Lock Code</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%=  device.lockCode%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Visual Condition</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%=  device.condition%>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-end d-flex">Important Data</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <%if(device.data == 'true'){%>
+                                <i class="far fa-check-square"></i>
+                            <%}else{%>
+                                <i class="far fa-square"></i>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-0">
+                    <div class="row mx-1 bg-light">
+                        <div class="col-lg-12 border">
+                            <h5 class="text-center">Problem</h5>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <a href="" class="btn btn-primary btn-sm float-right">Edit</a>
+                            <p class="">Problem Description</p>
+                        </div>
+                        <% if(device.repair){%>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-start d-flex"><%=device.repair%></p>
+                        </div>
+                        <%}else{%>
+                            <div class="col-lg-6 border px-1">
+                                <p class="justify-content-start d-flex">No repair state added</p>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#repairAdd">
+                                    Dodaj usterkę
+                                </button>
+                                <div class="modal fade" id="repairAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="form-group" action="/addRepair" method="post">
+                                                    <div class="form-control">
+                                                        <input class="form-control" type="text" id="repair" name="repair">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary modalSave">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <%}%>
+                            <% if(device.diagnose && typeof device.diagnose != "undefined"){%>
+                        <div class="col-lg-6 border px-1">
+                            <a href="/service/devices/<%=device._id%>/addDiagnose" class="btn btn-primary btn-sm float-right">Edit</a>
+                            <p class="">Diagnose</p>
+                        </div>
+                            <div class="col-lg-6 border px-1">
+                                <p class="justify-content-start d-flex"><%=device.diagnose%></p>
+                            </div>
+                        <%}%>
+
+
+                        <% if(device.result&& typeof device.result != "undefined"){%>
+                        <div class="col-lg-6 border px-1">
+                            <a href="/service/devices/<%=device._id%>/addResult" class="btn btn-primary btn-sm float-right">Edit</a>
+                            <p class="">Result</p>
+                        </div>
+                        <div class="col-lg-6 border px-1">
+                            <p class="justify-content-start d-flex"><%=device.result%></p>
+                        </div>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finances" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="row bg-light">
+                <div class="col-lg-6 border">
+                    <p class="lead">Price for repair</p>
+                </div>
+                <div class="col-lg-6 border">
+                    <p><%=device.price%></p>
+                </div>
+                <div class="col-lg-6 border">
+                    <p class="lead">Cost of repair</p>
+                </div>
+                <div class="col-lg-6 border">
+                    <p><%=device.costOfRepair%></p>
+                </div>
+                <div class="col-lg-6 border">
+                    <p class="lead">Profit</p>
+                </div>
+                <div class="col-lg-6 border">
+                    <p><%=profit%></p>
+                </div>
+            </div>
+
+        </div>
+        <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="contact-tab">...</div>
+    </div>
+</div>
+</section>
+</div>
+
+
+
+
+
+
+
+<% include ../partials/footer%>
